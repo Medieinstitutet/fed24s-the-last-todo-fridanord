@@ -4,13 +4,11 @@ import {
     Checkbox,
     IconButton,
     ListItemText,
-    ListItemSecondaryAction,
     Box,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-//import { CheckBox } from "@mui/icons-material";
 
 interface Props {
     todo: Todo;
@@ -36,7 +34,7 @@ const TodoItem = ({ todo, index, onToggle, onDelete, onMoveUp, onMoveDown }: Pro
                     color: todo.done ? 'gray' : 'black',
                 }}
             />
-            <ListItemSecondaryAction> //Ändra detta till en nyare.
+           
                 <Box display="flex" gap={1}>
                     <IconButton onClick={() => onMoveUp(index)}>
                         <ArrowUpwardIcon />
@@ -48,7 +46,7 @@ const TodoItem = ({ todo, index, onToggle, onDelete, onMoveUp, onMoveDown }: Pro
                         <DeleteIcon />
                     </IconButton>
                 </Box>
-            </ListItemSecondaryAction>
+            
         </ListItem>
     );
 };
