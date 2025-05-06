@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { Container, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 import './App.css'
-import { TodoList } from './components/TodoList';
-import AddTodo from './components/AddTodo';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
 import { Todo } from './models/Todo';
 
 function App() {
@@ -29,14 +31,42 @@ function App() {
     setTodos(prev => [newTodo, ...prev]);
   };
 
-  const sortedTodos = [...todos].sort((a, b) => Number(a.done) - Number(b.done));
+  const deleteTodo = (id:number) => {
+    setTodos(prev => prev.filter(todo => todo.id !== id));
+  };
+
+  const moveUp = (index: number) => {
+    if (index === 0) return;
+    const newTodos = [...todos];
+    [newTodos[index - 1], newTodos[index]] = [newTodos[index], newTodos[index -1]];
+    setTodos(newTodos);
+  };
+
+  const moveDown = (index: number) => {
+    if (index === todos.length - 1) return;
+    const newTodos = [...todos];
+    [newTodos[index], newTodos[index + 1]] = [newTodos[index + 1], newTodos[index]];
+    setTodos(newTodos);
+  };
+
+  //const sortedTodos = [...todos].sort((a, b) => Number(a.done) - Number(b.done));
 
   return (
-    <main className="p-3 max-w-xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">Min Todo Lista</h1>
-      <AddTodo addTodo ={addTodo} />
-      <TodoList todos={sortedTodos} toggleTodo={toggleTodo} />
-    </main>
+    <Container maxWidth="sm">
+      <Box mt={4}>
+        <Typography variant='h4' gutterBottom>
+          Att göra, en todo lista.
+        </Typography>
+        <TodoForm onAddTodo={addTodo} />
+        <TodoList
+          todos={todos}
+          onToggle={toggleTodo}
+          onDelete={deleteTodo}
+          onMoveUp={moveUp}
+          onMoveDown={moveDown}
+        />
+      </Box>
+    </Container>
 
   );
 }

@@ -1,17 +1,31 @@
 import { Todo } from "../models/Todo";
 import TodoItem from "./TodoItem";
+import { List } from '@mui/material';
 
-type Props = {
+interface Props {
     todos: Todo[];
-    toggleTodo: (id: number) => void
-};
+    onToggle: (id: number) => void;
+    onDelete: (id: number) => void;
+    onMoveUp: (index: number) => void;
+    onMoveDown: (index: number) => void;
+}
 
-export const TodoList = ({ todos, toggleTodo }: Props) => {
+const TodoList = ({ todos, onToggle, onDelete, onMoveUp, onMoveDown }: Props) => {
     return (
-        <ul className="space-y-2-mt-5">
-            {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
+        <List>
+            {todos.map((todo, index) => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    index={index}
+                    onToggle={onToggle}
+                    onDelete={onDelete}
+                    onMoveUp={onMoveUp}
+                    onMoveDown={onMoveDown}
+                />
             ))}
-        </ul>
+        </List>
     );
 };
+
+export default TodoList;
