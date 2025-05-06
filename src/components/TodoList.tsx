@@ -1,4 +1,5 @@
 import { Todo } from "../models/Todo";
+import TodoItem from "./TodoItem";
 
 type Props = {
     todos: Todo[];
@@ -9,7 +10,7 @@ export const TodoList = ({ todos, toggleTodo }: Props) => {
     return (
         <ul className="space-y-2-mt-5">
             {todos.map(todo => (
-                <TodoItem key={todo.id} todo={todo} toogleTodo={toogleTodo} />
+                <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} />
             ))}
         </ul>
     );
