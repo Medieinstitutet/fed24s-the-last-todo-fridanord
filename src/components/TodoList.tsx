@@ -1,31 +1,18 @@
 import { Todo } from "../models/Todo";
-import TodoItem from "./TodoItem";
-import { List } from '@mui/material';
 
-interface Props {
+type TodoListProps = {
     todos: Todo[];
-    onToggle: (id: number) => void;
     onDelete: (id: number) => void;
-    onMoveUp: (index: number) => void;
-    onMoveDown: (index: number) => void;
-}
-
-const TodoList = ({ todos, onToggle, onDelete, onMoveUp, onMoveDown }: Props) => {
-    return (
-        <List>
-            {todos.map((todo, index) => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    index={index}
-                    onToggle={onToggle}
-                    onDelete={onDelete}
-                    onMoveUp={onMoveUp}
-                    onMoveDown={onMoveDown}
-                />
-            ))}
-        </List>
-    );
 };
 
-export default TodoList;
+export const TodoList = ({ todos, onDelete }: TodoListProps) => {
+    return (
+        <ul className="no-bullets">
+            {todos.map(todo => (
+                <li key={todo.id}>
+                    {todo.text} <button onClick={() => onDelete(todo.id)}>Klar</button>
+                </li>
+            ))}
+        </ul>
+    );
+};
