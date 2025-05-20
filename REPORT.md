@@ -51,7 +51,7 @@ för att köra projektet.
 
 
 ## 🏆 **Betyg: VG**
-📌 **Motivering:** Koden uppfyller alla krav för både betyget G och VG. Den presenterar en funktionell och välstrukturerad todo-lista i en React-applikation. Studenten har implementerat funktionalitet för att visa och hantera todo-lista där uppgifter kan markeras som klara eller oklara, samt läggas till och sorteras. Ett grafiskt ramverk (Material UI) används effektivt, och CSS är väl strukturerad.
+📌 **Motivering:** Koden uppfyller alla krav för både G och VG-nivå. Studenten har implementerat en hårdkodad lista, presentera den på skärmen, och tillhandahållit funktionalitet för att ta bort och markera todos som klara. För VG-nivå, har studenten även implementerat möjligheten att visa både klara och oklara todos och att återställa statusen till oklart. Ett form för att skapa nya todos är inkluderat, och state är lyft för att möjliggöra delning av komponenter. Sortering och ett grafiskt ramverk (Material UI) har också lagts till. Koden är välstrukturerad och tydligt kommenterad.
 
 💡 **Förbättringsförslag:**  
-Det finns inga negativa aspekter, men för framtida förbättringar kan du överväga att implementera mer avancerade funktioner som beständighet genom att spara todo-data i ett API eller i lokal lagring, samt att implementera enhetstester för funktioner i applikationen.
+Inga större förbättringar behövs. Eventuellt kan koden optimeras ytterligare genom att bryta ner stora komponenter ännu mer för ökad läsbarhet och underhållbarhet. Dessutom, för att förbättra användarupplevelsen, kan animationer läggas till när en todo flyttas upp eller ner i listan.
